@@ -2,7 +2,7 @@
   "name": "reptrack",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/reptrack",
+  "homepage": ".",
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1675466862",
     "@mediapipe/drawing_utils": "^0.3.1675466124",
