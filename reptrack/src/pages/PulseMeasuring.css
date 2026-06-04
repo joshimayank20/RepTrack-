@@ -1,0 +1,117 @@
+.pulse-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 844px;
+  background: var(--bg-primary);
+}
+
+.pulse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px 20px;
+}
+
+.pulse-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pulse-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+  animation: ring-pulse 2s ease-in-out infinite;
+}
+
+.pulse-ring.outer {
+  width: 220px;
+  height: 220px;
+  border-color: rgba(61,220,92,0.15);
+  animation-delay: 0s;
+}
+.pulse-ring.middle {
+  width: 170px;
+  height: 170px;
+  border-color: rgba(61,220,92,0.25);
+  animation-delay: 0.3s;
+}
+.pulse-ring.inner {
+  width: 120px;
+  height: 120px;
+  border-color: rgba(61,220,92,0.5);
+  animation-delay: 0.6s;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.7; }
+}
+
+.pulse-center {
+  width: 80px;
+  height: 80px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(61,220,92,0.5);
+  animation: center-beat 1s ease-in-out infinite;
+}
+
+@keyframes center-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(61,220,92,0.7); }
+}
+
+.pulse-pct {
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+}
+
+.pulse-status {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.pulse-wave-wrap {
+  margin: 20px 0;
+  padding: 0 20px;
+  height: 100px;
+}
+
+.pulse-stop-wrap {
+  padding: 8px 28px 40px;
+}
+
+.pulse-stop-btn {
+  background: var(--green);
+  letter-spacing: 2px;
+}

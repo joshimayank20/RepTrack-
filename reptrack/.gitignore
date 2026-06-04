@@ -1,0 +1,11 @@
+# Backend
+reptrack-backend/node_modules/
+reptrack-backend/.env
+
+# Frontend
+reptrack/node_modules/
+reptrack/build/
+
+# OS
+.DS_Store
+Thumbs.db

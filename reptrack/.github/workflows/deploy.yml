@@ -1,0 +1,59 @@
+name: Deploy RepTrack to GitHub Pages
+
+on:
+  push:
+    branches: [main]   # triggers on every push to main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up Node 18
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: reptrack/package-lock.json
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        working-directory: ./reptrack
+        run: npm install --legacy-peer-deps
+
+      # 4. Build the React app
+      #    REACT_APP_API_URL points to your deployed Render backend
+      - name: Build React app
+        working-directory: ./reptrack
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          PUBLIC_URL: /reptrack   # must match your GitHub repo name
+        run: npm run build
+
+      # 5. Upload build folder as GitHub Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./reptrack/build
+
+      # 6. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
