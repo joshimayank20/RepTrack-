@@ -1,7 +1,9 @@
 // src/services/api.js
 // Centralised API layer — import this instead of writing fetch() everywhere
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const BASE_URL =
+  process.env.REACT_APP_API_URL ||
+  'https://reptrack-production-d7ae.up.railway.app/api';
 
 // ── Token helpers ────────────────────────────────────────────────────────────
 const getToken = () => localStorage.getItem('reptrack_token');
